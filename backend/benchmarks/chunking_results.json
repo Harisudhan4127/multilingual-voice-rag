@@ -1,0 +1,53 @@
+{
+  "dataset": "synthetic",
+  "num_documents": 17,
+  "num_eval_queries": 17,
+  "retrieval_method": "bm25_only",
+  "notes": "Retrieval signal is BM25-only. Dense/embedding-based retrieval is added in Phase 3-4; this evaluation will be re-run with hybrid dense+BM25 retrieval once available, and results updated -- not estimated in advance.",
+  "results": [
+    {
+      "strategy": "sentence",
+      "num_chunks": 30,
+      "num_retrievable_chunks": 30,
+      "chunking_time_ms": 0.363,
+      "recall_at_5": 1.0,
+      "mrr": 1.0,
+      "avg_query_latency_ms": 0.1034,
+      "index_size_chars": 12274,
+      "num_eval_queries": 17
+    },
+    {
+      "strategy": "token",
+      "num_chunks": 34,
+      "num_retrievable_chunks": 34,
+      "chunking_time_ms": 0.253,
+      "recall_at_5": 1.0,
+      "mrr": 1.0,
+      "avg_query_latency_ms": 0.1031,
+      "index_size_chars": 11575,
+      "num_eval_queries": 17
+    },
+    {
+      "strategy": "semantic",
+      "num_chunks": 43,
+      "num_retrievable_chunks": 43,
+      "chunking_time_ms": 0.945,
+      "recall_at_5": 1.0,
+      "mrr": 1.0,
+      "avg_query_latency_ms": 0.1157,
+      "index_size_chars": 10387,
+      "num_eval_queries": 17
+    },
+    {
+      "strategy": "parent_child",
+      "num_chunks": 54,
+      "num_retrievable_chunks": 37,
+      "chunking_time_ms": 0.533,
+      "recall_at_5": 1.0,
+      "mrr": 1.0,
+      "avg_query_latency_ms": 0.106,
+      "index_size_chars": 10393,
+      "num_eval_queries": 17
+    }
+  ]
+}

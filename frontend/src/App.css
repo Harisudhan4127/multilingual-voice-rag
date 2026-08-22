@@ -1,0 +1,225 @@
+.app {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.25rem;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.subtitle {
+  color: #666;
+  margin-top: 0.25rem;
+}
+
+.status-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin: 1.25rem 0;
+  padding: 0.6rem 0.9rem;
+  background: #f5f5f7;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  flex-wrap: wrap;
+}
+
+.badge {
+  padding: 0.15rem 0.6rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+}
+
+.badge-ok {
+  background: #d1f5df;
+  color: #0a7a3d;
+}
+
+.badge-degraded {
+  background: #fdeecb;
+  color: #9a6400;
+}
+
+.badge-down {
+  background: #fbd5d5;
+  color: #a10e0e;
+}
+
+.muted {
+  color: #777;
+}
+
+.query-panel form {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.query-panel input {
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.query-panel button {
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background: #2d2d2d;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.query-panel button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.error-box {
+  margin-top: 1rem;
+  padding: 0.75rem 1rem;
+  background: #fbd5d5;
+  color: #7a0e0e;
+  border-radius: 8px;
+}
+
+.answer-box {
+  margin-top: 1.25rem;
+  padding: 1rem 1.25rem;
+  background: #fafafa;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+
+.answer-box h3 {
+  margin-top: 0;
+}
+
+.meta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.75rem;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+footer {
+  margin-top: 2.5rem;
+  font-size: 0.8rem;
+}
+
+/* --- Voice (Phase 8) --- */
+
+.voice-row {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  margin-top: 0.75rem;
+}
+
+.mic-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mic-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  border-radius: 999px;
+  background: #2d2d2d;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.mic-button.recording {
+  background: #a10e0e;
+}
+
+.mic-button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd7d7;
+  animation: mic-pulse 1s infinite;
+}
+
+@keyframes mic-pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.25; }
+  100% { opacity: 1; }
+}
+
+.mock-transcript {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.55rem 0.8rem;
+  border: 1px dashed #bbb;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.mic-error {
+  color: #a10e0e;
+  font-size: 0.8rem;
+}
+
+.transcript {
+  background: #eef3fb;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.95rem;
+}
+
+.answer-box.refused {
+  border-color: #fdeecb;
+  background: #fffaf0;
+}
+
+.sources h4 {
+  margin-bottom: 0.35rem;
+}
+
+.sources ol {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.source-title {
+  font-weight: 600;
+}
+
+.source-text {
+  margin: 0.15rem 0 0.6rem;
+  font-size: 0.85rem;
+  color: #444;
+}
+
+.timings summary {
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.timings ul {
+  margin: 0.4rem 0 0;
+  font-size: 0.8rem;
+  columns: 2;
+}

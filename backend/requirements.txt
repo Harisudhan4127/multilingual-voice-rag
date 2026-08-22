@@ -1,0 +1,28 @@
+# Core API (Phase 1)
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+fastapi==0.141.1
+uvicorn[standard]==0.52.4
+pydantic==2.13.4
+pydantic-settings==2.15.0
+httpx==0.28.1
+python-multipart==0.0.32
+python-dotenv==1.2.3
+
+# Chunking evaluation / BM25 (Phase 2)
+rank-bm25==0.2.2
+numpy==2.5.2
+
+# RAG pipeline (Phase 3+): embeddings, vector store, reranking.
+# torch comes CPU-only via the extra index above (no GPU required).
+torch==2.13.0+cpu
+sentence-transformers==6.0.0
+qdrant-client==1.19.0
+
+# Real MSMARCO-XI dataset adapter: only imported when DATASET_PROVIDER=msmarco_xi,
+# but installed by default so the real dataset is a config switch, not a setup step.
+datasets==5.0.1
+
+# Testing
+pytest==9.1.1
+pytest-asyncio==1.4.0

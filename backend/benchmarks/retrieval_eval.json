@@ -1,0 +1,73 @@
+{
+  "generated_at": "2026-08-22T09:14:11.061067+00:00",
+  "num_eval_queries": 17,
+  "num_indexed_chunks": 30,
+  "components": {
+    "embedder": "sentence_transformers:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "reranker": "cross_encoder",
+    "vector_store": "local"
+  },
+  "results": {
+    "dense": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr": 1.0,
+      "latency_ms": {
+        "min": 37.12,
+        "avg": 50.87,
+        "p50": 51.45,
+        "p70": 53.55,
+        "p95": 59.89,
+        "p100": 63.3
+      }
+    },
+    "bm25": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr": 1.0,
+      "latency_ms": {
+        "min": 37.12,
+        "avg": 50.87,
+        "p50": 51.45,
+        "p70": 53.55,
+        "p95": 59.89,
+        "p100": 63.3
+      }
+    },
+    "hybrid_rrf": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr": 1.0,
+      "latency_ms": {
+        "min": 37.12,
+        "avg": 50.87,
+        "p50": 51.45,
+        "p70": 53.55,
+        "p95": 59.89,
+        "p100": 63.3
+      }
+    },
+    "hybrid_rerank": {
+      "recall@1": 1.0,
+      "recall@5": 1.0,
+      "recall@10": 1.0,
+      "mrr": 1.0,
+      "latency_ms": {
+        "min": 571.49,
+        "avg": 922.75,
+        "p50": 836.97,
+        "p70": 1007.03,
+        "p95": 1331.3,
+        "p100": 1477.53
+      }
+    }
+  },
+  "notes": [
+    "Relevance labels come from app/datasets/eval_queries.py (hand-labeled against the synthetic dataset).",
+    "A chunk counts as correct if its document_id is in the labeled set.",
+    "All values are measured live by scripts/evaluate_retrieval.py."
+  ]
+}

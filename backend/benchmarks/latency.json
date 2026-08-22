@@ -1,0 +1,109 @@
+{
+  "generated_at": "2026-08-22T09:11:02.059146+00:00",
+  "app_env": "development",
+  "dataset_provider": "synthetic",
+  "chunking_strategy": "sentence",
+  "num_documents": 17,
+  "num_queries": 100,
+  "query_derivation": "hand-labeled eval questions + templated title variants (in-distribution); not an independent benchmark suite",
+  "warmup": "one untimed warmup query before measurement",
+  "cache": "response cache disabled during measurement",
+  "components": {
+    "embedder": "sentence_transformers:sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+    "vector_store": "local",
+    "bm25_chunks": 30,
+    "reranker": "cross_encoder",
+    "llm": "mock",
+    "stt": "mock"
+  },
+  "rag_latency_ms": {
+    "min": 1134.99,
+    "avg": 1682.63,
+    "p50": 1690.46,
+    "p70": 1818.54,
+    "p95": 2081.8,
+    "p100": 2462.38
+  },
+  "rag_stage_latency_ms": {
+    "query_processing_ms": {
+      "min": 0.03,
+      "avg": 0.05,
+      "p50": 0.05,
+      "p70": 0.06,
+      "p95": 0.09,
+      "p100": 0.14
+    },
+    "input_guardrails_ms": {
+      "min": 0.02,
+      "avg": 0.04,
+      "p50": 0.03,
+      "p70": 0.04,
+      "p95": 0.07,
+      "p100": 1.02
+    },
+    "retrieval_ms": {
+      "min": 1.78,
+      "avg": 46.76,
+      "p50": 48.38,
+      "p70": 55.64,
+      "p95": 79.74,
+      "p100": 131.24
+    },
+    "rerank_ms": {
+      "min": 1077.06,
+      "avg": 1634.74,
+      "p50": 1634.86,
+      "p70": 1787.05,
+      "p95": 2005.99,
+      "p100": 2389.27
+    },
+    "context_selection_ms": {
+      "min": 0.01,
+      "avg": 0.01,
+      "p50": 0.01,
+      "p70": 0.01,
+      "p95": 0.02,
+      "p100": 0.04
+    },
+    "generation_ms": {
+      "min": 0.29,
+      "avg": 0.5,
+      "p50": 0.46,
+      "p70": 0.52,
+      "p95": 0.84,
+      "p100": 1.15
+    },
+    "output_guardrails_ms": {
+      "min": 0.16,
+      "avg": 0.33,
+      "p50": 0.27,
+      "p70": 0.32,
+      "p95": 0.64,
+      "p100": 1.53
+    },
+    "total_ms": {
+      "min": 1134.99,
+      "avg": 1682.63,
+      "p50": 1690.46,
+      "p70": 1818.54,
+      "p95": 2081.8,
+      "p100": 2462.38
+    }
+  },
+  "status_counts": {
+    "ok": 100
+  },
+  "notes": [
+    "All values are measured live by scripts/benchmark.py; none are fabricated.",
+    "LLM is the deterministic extractive mock; a hosted LLM would add network RTT.",
+    "Voice latency uses MockSTTProvider (local); Sarvam STT would add network RTT."
+  ],
+  "full_voice_latency_ms": {
+    "min": 1212.9,
+    "avg": 1770.18,
+    "p50": 1729.36,
+    "p70": 1898.4,
+    "p95": 2332.33,
+    "p100": 2934.22
+  }
+}

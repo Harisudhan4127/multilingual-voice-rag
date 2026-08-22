@@ -1,0 +1,188 @@
+{
+  "generated_at": "2026-08-22T09:18:52.423151+00:00",
+  "num_queries": 17,
+  "summary": {
+    "ok_status_rate": 1.0,
+    "grounded_rate": 1.0,
+    "citations_valid_rate": 1.0,
+    "citations_relevant_rate": 0.6471,
+    "avg_answer_support_proxy": 0.793
+  },
+  "per_query": [
+    {
+      "query": "What is supervised learning?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.9,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1469.4
+    },
+    {
+      "query": "How do you prevent overfitting in a machine learning model?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.76,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 1747.08
+    },
+    {
+      "query": "What are convolutional neural networks used for?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.947,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1558.15
+    },
+    {
+      "query": "Explain gradient descent and the Adam optimizer.",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.968,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1275.27
+    },
+    {
+      "query": "What were the main cities of the Indus Valley Civilization?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.963,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1535.99
+    },
+    {
+      "query": "Why did Ashoka convert to Buddhism?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.952,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1674.6
+    },
+    {
+      "query": "Who built the Taj Mahal and why?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 1.0,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1685.18
+    },
+    {
+      "query": "What role did Mahatma Gandhi play in the independence movement?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.97,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 2103.38
+    },
+    {
+      "query": "How do greenhouse gases trap heat in the atmosphere?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.972,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 2219.3
+    },
+    {
+      "query": "How does carbon dioxide absorption affect ocean pH?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.469,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 1852.91
+    },
+    {
+      "query": "Why has solar and wind energy become cheaper?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.972,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 2296.55
+    },
+    {
+      "query": "How does blood flow between the heart and lungs?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 1.0,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 1673.33
+    },
+    {
+      "query": "What is the difference between innate and adaptive immunity?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.531,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 2354.53
+    },
+    {
+      "query": "What part of the brain controls the sleep-wake cycle?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.969,
+      "citations_valid": true,
+      "citations_relevant": true,
+      "num_sources": 5,
+      "latency_ms": 2256.97
+    },
+    {
+      "query": "What is the difference between a git commit and a branch?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.037,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 1855.52
+    },
+    {
+      "query": "What HTTP methods are used in a RESTful API?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.571,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 1576.22
+    },
+    {
+      "query": "Why would you add an index to a database column?",
+      "status": "ok",
+      "grounded": true,
+      "answer_support_proxy": 0.5,
+      "citations_valid": true,
+      "citations_relevant": false,
+      "num_sources": 5,
+      "latency_ms": 2032.44
+    }
+  ],
+  "notes": [
+    "'answer_support' is a lexical-overlap PROXY against the labeled relevant documents, not human correctness judgment.",
+    "'citations_relevant' requires every cited chunk to come from a labeled-relevant document; queries without citations are excluded.",
+    "All values measured live by scripts/evaluate_answers.py."
+  ]
+}
