@@ -1,28 +1,38 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
-/**
- * Microphone capture button (Phase 8).
- *
- * Uses MediaRecorder; clicking starts/stops recording and hands the blob to
- * onComplete. Recording state is surfaced so App can disable other controls.
- */
 export default function MicButton({ onComplete, disabled = false }) {
-  const [state, setState] = useState("idle"); // idle | requesting | recording | error
+  const [state, setState] = useState("idle");
   const [error, setError] = useState(null);
+  const [elapsed, setElapsed] = useState(0);
   const recorderRef = useRef(null);
   const chunksRef = useRef([]);
+  const timerRef = useRef(null);
 
   useEffect(() => {
     return () => {
-      // Unmount cleanup: stop any in-flight recording.
       if (recorderRef.current && recorderRef.current.state !== "inactive") {
         recorderRef.current.stop();
       }
       recorderRef.current?.stream?.getTracks().forEach((t) => t.stop());
+      clearInterval(timerRef.current);
     };
   }, []);
 
-  const startRecording = useCallback(async () => {
+  const startTimer = () => {
+    setElapsed(0);
+    timerRef.current = setInterval(
+      () => setElapsed((s) => s + 1),
+      1000
+    );
+  };
+
+  const stopTimer = () => {
+    clearInterval(timerRef.current);
+    timerRef.current = null;
+    setElapsed(0);
+  };
+
+  async function startRecording() {
     setError(null);
     setState("requesting");
     try {
@@ -34,6 +44,7 @@ export default function MicButton({ onComplete, disabled = false }) {
       };
       recorder.onstop = () => {
         stream.getTracks().forEach((t) => t.stop());
+        stopTimer();
         const blob = new Blob(chunksRef.current, {
           type: recorder.mimeType || "audio/webm",
         });
@@ -42,51 +53,56 @@ export default function MicButton({ onComplete, disabled = false }) {
       };
       recorderRef.current = recorder;
       recorder.start();
+      startTimer();
       setState("recording");
     } catch (e) {
       setError(
         e.name === "NotAllowedError"
-          ? "Microphone permission denied."
-          : `Microphone unavailable: ${e.message}`
+          ? "Microphone permission denied"
+          : `Mic unavailable: ${e.message}`
       );
       setState("error");
     }
-  }, [onComplete]);
+  }
 
-  const stopRecording = useCallback(() => {
-    if (recorderRef.current && recorderRef.current.state !== "inactive") {
-      recorderRef.current.stop();
+  function handleClick() {
+    if (state === "recording") {
+      if (recorderRef.current && recorderRef.current.state !== "inactive") {
+        recorderRef.current.stop();
+      }
+    } else if (state !== "requesting") {
+      startRecording();
     }
-  }, []);
+  }
 
-  const handleClick = () => {
-    if (state === "recording") stopRecording();
-    else if (state !== "requesting") startRecording();
-  };
-
-  const label =
-    state === "recording"
-      ? "Stop"
-      : state === "requesting"
-        ? "..."
-        : "Record";
+  const mmss = `${String(Math.floor(elapsed / 60)).padStart(2, "0")}:${String(elapsed % 60).padStart(2, "0")}`;
 
   return (
-    <div className="mic-wrapper">
+    <div className="mic-wrap" style={{ display: "flex", alignItems: "center", gap: "0.55rem" }}>
       <button
         type="button"
-        className={`mic-button ${state === "recording" ? "recording" : ""}`}
+        className={`mic-fab ${state === "recording" ? "recording" : ""}`}
         onClick={handleClick}
         disabled={disabled || state === "requesting"}
-        title="Record a question"
+        title={state === "recording" ? "Stop recording" : "Record a question"}
+        aria-label={state === "recording" ? "Stop recording" : "Start voice recording"}
       >
-        {state === "recording" && <span className="pulse" aria-hidden="true" />}
-        <span className="mic-icon" aria-hidden="true">
-          {state === "recording" ? "\u23F8" : "\uD83C\uDFA4"}
-        </span>
-        <span>{label}</span>
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          {state === "recording" ? (
+            <rect x="6" y="6" width="12" height="12" rx="2" fill="currentColor" stroke="none" />
+          ) : (
+            <>
+              <rect x="9" y="2" width="6" height="12" rx="3" />
+              <path d="M5 10v1a7 7 0 0 0 14 0v-1" />
+              <line x1="12" y1="18" x2="12" y2="22" />
+            </>
+          )}
+        </svg>
       </button>
-      {error && <span className="mic-error">{error}</span>}
+      {state === "recording" && <span className="mic-timer">{mmss}</span>}
+      {error && (
+        <span style={{ fontSize: "0.74rem", color: "var(--danger)" }}>{error}</span>
+      )}
     </div>
   );
 }

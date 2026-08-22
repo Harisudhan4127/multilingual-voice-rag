@@ -1,5 +1,21 @@
 # Voice-Enabled RAG — HH Goa 2026 (Shortlisting Task 2)
 
+> **In honor of Hacker House Goa 2026 — organized by 2:47 PM Studio. Hosted on Devfolio.**
+
+## Team HS-TECH
+
+| Member | Role |
+|---|---|
+| **Harisudhan B** | Backend Developer |
+| **Avinash R** | DevOps |
+| **Aravindan P** | Frontend Developer |
+
+*Manakula Vinayagar Institute of Technology*
+
+We sincerely thank **2:47 PM Studio**, **Devfolio**, and all the organizers,
+mentors and volunteers of **Hacker House Goa 2026** for creating the space,
+guidance and community that made this project possible.
+
 A voice-enabled Retrieval-Augmented Generation system, built local/offline-first
 and upgraded to real providers (Sarvam STT, hosted LLM, the real MSMARCO-XI
 dataset) through **configuration only** — no architecture rewrites.
