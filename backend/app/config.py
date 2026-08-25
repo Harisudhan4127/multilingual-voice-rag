@@ -84,6 +84,7 @@ class Settings(BaseSettings):
     OFF_TOPIC_MIN_VOCAB_HITS: int = 1
 
     # --- Reranker ---
+    RERANKER_TYPE: Literal["cross_encoder", "lexical"] = "cross_encoder"
     RERANKER_MODEL: str = "cross-encoder/ms-marco-MiniLM-L-6-v2"
 
     # --- Timeouts (seconds) ---

@@ -100,14 +100,18 @@ class LexicalReranker(BaseReranker):
 
 def get_reranker(settings: Settings) -> BaseReranker:
     """Load the configured reranker once at startup; fall back gracefully."""
+    if settings.RERANKER_TYPE == "lexical":
+        logger.info("Loaded lexical reranker")
+        return LexicalReranker()
+
+    # cross_encoder (default) -- attempt model load with lexical fallback
     try:
         reranker = CrossEncoderReranker(settings.RERANKER_MODEL)
         logger.info("Loaded cross-encoder reranker '%s'", settings.RERANKER_MODEL)
         return reranker
     except Exception as exc:  # noqa: BLE001 - fallback is deliberate
         logger.warning(
-            "Cross-encoder '%s' unavailable (%s); using lexical reranker fallback",
-            settings.RERANKER_MODEL,
+            "Cross-encoder unavailable; using lexical reranker fallback (%s)",
             exc,
         )
         return LexicalReranker()
